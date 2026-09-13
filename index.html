@@ -1,398 +1,177 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PATAMAR FOGO — Sou Homem Porra</title>
-<meta name="description" content="Perfume pra homem que cansou de ser ignorado. PATAMAR FOGO: 1 por R$99,90 ou 2 por R$149,99. Chama no WhatsApp.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PATAMAR — FOGO · Eau de Parfum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* Paleta extraída das imagens: preto basalto, âmbar da lava, ouro escovado */
-    --preto:#0a0705;
-    --basalto:#14100c;
-    --pedra:#1e1812;
-    --brasa:#c9721f;
-    --lava:#ff7a18;
-    --lava-clara:#ffb347;
-    --ouro:#d4af37;
-    --ouro-claro:#f0d98a;
-    --osso:#e8e0d4;
-    --cinza:#9a8f80;
+    --bone:#EDE8DF; --stone:#C6BCAE; --ink:#141110;
+    --ash:#6E655C;  --ember:#A6521F; --line:rgba(20,17,16,.16);
+    --pad:clamp(20px,6vw,88px);
   }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+  body{background:var(--bone);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;line-height:1.6}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:.02em}
+  .lbl{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--ash)}
+  a{color:inherit;text-decoration:none}
 
-  *{margin:0;padding:0;box-sizing:border-box}
+  /* aviso */
+  .bar{border-bottom:1px solid var(--line);padding:11px var(--pad);text-align:center}
+  .bar span{font-size:10px;letter-spacing:.3em;text-transform:uppercase}
+  .bar b{color:var(--ember);font-weight:400}
 
-  html{scroll-behavior:smooth}
+  /* navegação */
+  header{position:sticky;top:0;z-index:20;background:rgba(237,232,223,.92);
+         backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+         display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+         padding:20px var(--pad);gap:24px}
+  header nav{display:flex;gap:32px}
+  header .brand{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.42em;padding-left:.42em}
+  header .end{text-align:right}
 
-  body{
-    background:var(--preto);
-    color:var(--osso);
-    font-family:'Helvetica Neue',Arial,sans-serif;
-    line-height:1.6;
-    overflow-x:hidden;
-  }
+  /* herói */
+  .hero{position:relative;height:calc(100svh - 100px);min-height:620px;overflow:hidden}
+  .hero figure{position:absolute;inset:0}
+  .hero figcaption{position:absolute;inset:auto 0 0 0;padding:var(--pad);
+    display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .hero h1{font-size:clamp(80px,17vw,220px);line-height:.86;letter-spacing:.06em;mix-blend-mode:difference;color:#fff}
+  .hero .meta{text-align:right;color:#fff;mix-blend-mode:difference}
 
-  /* fundo vulcânico global */
-  body::before{
-    content:'';
-    position:fixed;
-    inset:0;
-    background:
-      radial-gradient(circle at 50% 120%, rgba(255,122,24,.22), transparent 55%),
-      radial-gradient(circle at 15% 10%, rgba(212,175,55,.07), transparent 45%);
-    pointer-events:none;
-    z-index:0;
-  }
+  .btn{display:inline-block;border:1px solid var(--ink);padding:16px 46px;font-size:10px;
+       letter-spacing:.3em;text-transform:uppercase;transition:.35s;background:transparent}
+  .btn:hover{background:var(--ink);color:var(--bone)}
+  .btn.solid{background:var(--ink);color:var(--bone);width:100%;text-align:center}
+  .btn.solid:hover{opacity:.85}
 
-  .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px}
+  section{padding:clamp(90px,15vh,190px) var(--pad)}
+  .head{max-width:760px;margin-bottom:64px}
+  .head h2{font-size:clamp(34px,5vw,58px);line-height:1.1;margin-top:18px}
 
-  /* ── TIPOGRAFIA ── */
-  h1,h2,h3{
-    font-family:Georgia,'Times New Roman',serif;
-    letter-spacing:.02em;
-    line-height:1.1;
-    text-transform:uppercase;
-  }
+  /* manifesto */
+  .manifesto{text-align:center;border-block:1px solid var(--line)}
+  .manifesto p{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4.4vw,50px);
+               line-height:1.35;max-width:16ch;margin-inline:auto}
+  .manifesto em{font-style:italic;color:var(--ember)}
 
-  .gold{
-    background:linear-gradient(180deg,var(--ouro-claro) 0%,var(--ouro) 45%,#9c7a1e 100%);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-  }
+  /* pirâmide */
+  .pyramid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+  .pyramid article{padding:44px 34px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+  .pyramid article:last-child{border-right:0}
+  .pyramid h3{font-size:30px;margin:20px 0 14px}
+  .pyramid ul{list-style:none;margin-top:22px;display:grid;gap:8px;color:var(--ash);font-size:14px}
+  .pyramid li::before{content:"— ";color:var(--ember)}
 
-  .eyebrow{
-    display:inline-block;
-    font-size:12px;
-    letter-spacing:.32em;
-    text-transform:uppercase;
-    color:var(--lava-clara);
-    border:1px solid rgba(201,114,31,.4);
-    padding:8px 16px;
-    border-radius:2px;
-    background:rgba(201,114,31,.08);
-  }
+  /* imagem muda */
+  .full{padding:0}
+  .full figure{height:min(88svh,900px);position:relative}
+  .full cite{position:absolute;left:var(--pad);bottom:var(--pad);font-style:normal;
+             font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#fff;mix-blend-mode:difference}
 
-  /* ── TOPO ── */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(10,7,5,.85);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(212,175,55,.18);
-  }
-  .nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:16px 24px;max-width:1080px;margin:0 auto;
-  }
-  .logo{
-    font-family:Georgia,serif;font-size:22px;letter-spacing:.22em;
-    color:var(--ouro);text-transform:uppercase;font-weight:700;
-  }
-  .nav-cta{
-    font-size:13px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--preto);background:var(--ouro);
-    padding:10px 20px;border-radius:2px;text-decoration:none;font-weight:700;
-    transition:.25s;
-  }
-  .nav-cta:hover{background:var(--lava);color:#fff}
+  /* rito */
+  .rite{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,72px)}
+  .rite h3{font-size:26px;margin:16px 0 10px}
+  .rite p{color:var(--ash);font-size:15px}
+  .num{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ember);letter-spacing:.2em}
 
-  /* ── HERO ── */
-  .hero-video{
-  position:relative;
-  min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  text-align:center;overflow:hidden;
-}
-.bg-video{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;z-index:0;
-}
-.veu{
-  position:absolute;inset:0;z-index:1;
-  background:
-    linear-gradient(180deg, rgba(10,7,5,.72) 0%, rgba(10,7,5,.45) 45%, rgba(10,7,5,.92) 100%),
-    radial-gradient(ellipse at 50% 100%, rgba(255,122,24,.28), transparent 60%);
-}
-.hero-conteudo{position:relative;z-index:2;padding:0 24px;max-width:760px}
-.hero-conteudo h1{font-size:clamp(38px,7.5vw,82px);margin:26px 0 20px}
-.hero-conteudo .sub{
-  font-size:clamp(16px,2.3vw,21px);
-  color:var(--cinza);max-width:640px;margin:0 auto 34px;
-}
-.hero-conteudo .sub strong{color:var(--osso);font-weight:700}
+  /* compra */
+  .buy{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(40px,6vw,110px);align-items:center}
+  .buy figure{aspect-ratio:4/5}
+  .buy h2{font-size:clamp(46px,7vw,86px);line-height:1;margin:14px 0 6px}
+  .price{font-family:'Cormorant Garamond',serif;font-size:34px;margin:26px 0 26px}
+  .price s{color:var(--stone);font-size:20px;margin-left:14px}
+  .spec{border-top:1px solid var(--line);margin-top:44px}
+  .spec div{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .spec dt{color:var(--ash);letter-spacing:.14em;text-transform:uppercase;font-size:10px}
+  .spec dd{text-align:right}
 
+  footer{border-top:1px solid var(--line);padding:70px var(--pad) 36px;display:grid;
+         grid-template-columns:1.4fr 1fr;gap:44px;align-items:start}
+  footer form{display:flex;border-bottom:1px solid var(--ink);max-width:340px}
+  footer input{flex:1;background:none;border:0;padding:12px 0;font:inherit;font-size:13px;color:var(--ink);outline:none}
+  footer button{background:none;border:0;cursor:pointer;font:inherit;font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+  footer small{grid-column:1/-1;color:var(--ash);font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-top:34px}
 
-  /* ── BOTÕES ── */
-  .btn{
-    display:inline-block;
-    padding:18px 40px;
-    border-radius:2px;
-    text-decoration:none;
-    font-weight:700;
-    font-size:15px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    transition:.25s;
-    border:1px solid transparent;
-  }
-  .btn-zap{
-    background:linear-gradient(135deg,var(--lava),var(--brasa));
-    color:#fff;
-    box-shadow:0 12px 40px rgba(255,122,24,.35);
-  }
-  .btn-zap:hover{transform:translateY(-3px);box-shadow:0 18px 50px rgba(255,122,24,.5)}
-  .btn-ouro{
-    background:linear-gradient(135deg,var(--ouro-claro),var(--ouro));
-    color:#1a1206;
-    box-shadow:0 12px 40px rgba(212,175,55,.3);
-  }
-  .btn-ouro:hover{transform:translateY(-3px)}
-  .btn-fantasma{
-    background:transparent;color:var(--osso);
-    border-color:rgba(212,175,55,.4);
-  }
-  .btn-fantasma:hover{border-color:var(--ouro);background:rgba(212,175,55,.08)}
-
-  .nota{font-size:13px;color:var(--cinza);margin-top:14px}
-
-  /* ── SEÇÕES ── */
-  section{padding:90px 0;border-top:1px solid rgba(212,175,55,.12)}
-  .sec-h{font-size:clamp(28px,4.6vw,46px);margin-bottom:18px}
-  .sec-p{color:var(--cinza);max-width:620px;font-size:17px}
-
-  /* ── GOLPES (copy de provocação) ── */
-  .golpes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:44px}
-  .golpe{
-    background:linear-gradient(160deg,var(--basalto),var(--pedra));
-    border:1px solid rgba(212,175,55,.16);
-    border-left:3px solid var(--lava);
-    padding:28px 24px;border-radius:2px;
-  }
-  .golpe p{font-family:Georgia,serif;font-size:19px;color:var(--osso);line-height:1.4}
-  .golpe span{display:block;margin-top:14px;font-size:13px;color:var(--cinza);letter-spacing:.06em}
-
-  /* ── OFERTA ── */
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:44px}
-  .card{
-    background:linear-gradient(165deg,#1a140e,#0f0b08);
-    border:1px solid rgba(212,175,55,.2);
-    border-radius:3px;padding:36px 30px;position:relative;
-    display:flex;flex-direction:column;
-  }
-  .card.destaque{
-    border-color:var(--ouro);
-    box-shadow:0 0 60px rgba(212,175,55,.14) inset,0 20px 50px rgba(0,0,0,.5);
-  }
-  .tag{
-    position:absolute;top:-13px;left:30px;
-    background:linear-gradient(135deg,var(--lava),var(--brasa));
-    color:#fff;font-size:11px;font-weight:700;letter-spacing:.16em;
-    text-transform:uppercase;padding:6px 14px;border-radius:2px;
-  }
-  .card h3{font-size:22px;color:var(--ouro);margin-bottom:6px}
-  .card .desc{font-size:14px;color:var(--cinza);margin-bottom:22px;min-height:42px}
-  .preco{font-family:Georgia,serif;font-size:46px;color:var(--osso);line-height:1}
-  .preco small{font-size:17px;color:var(--cinza);font-family:Arial,sans-serif}
-  .economia{
-    font-size:13px;color:var(--lava-clara);margin:12px 0 24px;
-    letter-spacing:.04em;text-transform:uppercase;
-  }
-  .card .btn{margin-top:auto;text-align:center}
-
-  /* ── PROVA ── */
-  .prints{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-top:44px}
-  .print{
-    background:#151109;border:1px solid rgba(212,175,55,.15);
-    border-radius:10px;padding:20px;
-  }
-  .balao{
-    background:#1f1a12;border-left:3px solid var(--ouro);
-    padding:14px 16px;border-radius:8px;font-size:15px;color:var(--osso);
-  }
-  .print .quem{margin-top:12px;font-size:12px;color:var(--cinza);letter-spacing:.1em;text-transform:uppercase}
-
-  /* ── FAQ ── */
-  details{
-    border-bottom:1px solid rgba(212,175,55,.15);
-    padding:20px 0;
-  }
-  summary{
-    cursor:pointer;font-size:18px;color:var(--osso);font-weight:700;
-    list-style:none;display:flex;justify-content:space-between;align-items:center;
-  }
-  summary::after{content:'+';color:var(--ouro);font-size:26px;font-weight:400}
-  details[open] summary::after{content:'−'}
-  details p{margin-top:14px;color:var(--cinza);font-size:16px}
-
-  /* ── FECHAMENTO ── */
-  .fecha{
-    text-align:center;
-    background:
-      radial-gradient(ellipse at 50% 100%, rgba(255,122,24,.28), transparent 60%),
-      linear-gradient(180deg,#0f0b08,#0a0705);
-    padding:100px 0;
-  }
-  .fecha h2{font-size:clamp(30px,6vw,64px);margin-bottom:20px}
-
-  footer{
-    padding:40px 24px;text-align:center;
-    border-top:1px solid rgba(212,175,55,.12);
-    font-size:13px;color:var(--cinza);letter-spacing:.08em;
-  }
-
-  /* ── ZAP FLUTUANTE ── */
-  .zap-fixo{
-    position:fixed;right:20px;bottom:20px;z-index:60;
-    background:linear-gradient(135deg,var(--lava),var(--brasa));
-    color:#fff;text-decoration:none;font-weight:700;font-size:14px;
-    padding:15px 24px;border-radius:40px;letter-spacing:.06em;
-    box-shadow:0 10px 35px rgba(255,122,24,.45);
-    text-transform:uppercase;
-  }
-
-  @media(max-width:600px){
-    .nav-cta{display:none}
-    section{padding:64px 0}
+  @media(max-width:900px){
+    .pyramid,.rite,.buy,footer{grid-template-columns:1fr}
+    header nav{display:none}
+    .pyramid article{border-right:0}
   }
 </style>
 </head>
 <body>
 
+<div class="bar"><span>Lote <b>09.26</b> · Produção limitada de 300 unidades · Frete grátis acima de R$ 199</span></div>
+
 <header>
-  <div class="nav">
-    <div class="logo">Patamar</div>
-    <a class="nav-cta" href="#oferta">Quero o meu</a>
-  </div>
+  <nav><a href="#olfativo" class="lbl">Olfativo</a><a href="#rito" class="lbl">O rito</a><a href="#comprar" class="lbl">Comprar</a></nav>
+  <a class="brand" href="#">PATAMAR</a>
+  <div class="end lbl">Sac / 05</div>
 </header>
 
-<div class="wrap">
+<section class="hero" style="padding:0">
+  <figure><img src="fogo-frente.jpg" alt="PATAMAR FOGO sobre pedra"><figcaption>
+    <h1>FOGO</h1>
+    <div class="meta lbl">Eau de Parfum<br>50 ml · 1.7 FL. OZ.</div>
+  </figcaption></figure>
+</section>
 
-  <!-- HERO -->
-  <  <section class="hero-video">
-  <video class="bg-video" autoplay muted loop playsinline poster="poster.jpg">
-    <source src="hero.mp4" type="video/mp4">
-  </video>
-  <div class="veu"></div>
+<section class="manifesto">
+  <p>Nem todo calor <em>precisa</em> anunciar-se.</p>
+</section>
 
-  <div class="hero-conteudo">
-    <span class="eyebrow">Linha Fogo 🔥</span>
-    <h1>Sou homem <span class="gold">porra</span>.</h1>
-    <p class="sub">
-      Tem homem que entra num lugar e <strong>ninguém registra</strong>.
-      E tem homem que entra e <strong>muda o clima da sala</strong>.
-    </p>
-    <a class="btn btn-zap" href="https://wa.me/55DDDNumeros?text=T%C3%B4%20no%20fogo%2C%20quero%20meu%20PATAMAR">
-      Chamar no WhatsApp
-    </a>
-    <p class="nota">Resposta no áudio. Direto, sem enrolação.</p>
+<section id="olfativo">
+  <div class="head"><span class="lbl">Arquitetura olfativa</span>
+    <h2>Oriental especiado. Construído para a noite.</h2>
   </div>
-  </section>
-    
-
-  <!-- OFERTA -->
-  <section id="oferta">
-    <span class="eyebrow">Linha Fogo</span>
-    <h2 class="sec-h">Escolhe o teu <span class="gold">patamar</span>.</h2>
-    <p class="sec-p">A maioria leva os 2. Um fica com tu. O outro é presente — e presente de perfume é a forma mais direta de marcar presença na vida de alguém.</p>
-
-    <div class="cards">
-      <div class="card">
-        <h3>1 Frasco</h3>
-        <p class="desc">PATAMAR FOGO · uso pessoal</p>
-        <div class="preco">R$99<small>,90</small></div>
-        <div class="economia">Frete combinado no WhatsApp</div>
-        <a class="btn btn-fantasma"
-           href="https://wa.me/55DDDNumeros?text=Quero%201%20frasco%20do%20PATAMAR%20FOGO">
-           Levar 1
-        </a>
-      </div>
-
-      <div class="card destaque">
-        <span class="tag">A maioria leva 2</span>
-        <h3>2 Frascos</h3>
-        <p class="desc">Um pra ti · um pra presentear</p>
-        <div class="preco">R$149<small>,99</small></div>
-        <div class="economia">R$75 cada · você economiza R$50</div>
-        <a class="btn btn-ouro"
-           href="https://wa.me/55DDDNumeros?text=Quero%20os%202%20frascos%20do%20PATAMAR%20FOGO">
-           Levar os 2
-        </a>
-      </div>
-    </div>
-
-    <p class="nota" style="text-align:center;margin-top:28px">
-      É menos que um lanche por semana se tu usar 6 meses.
-    </p>
-  </section>
-
-  <!-- PROVA -->
-  <section>
-    <span class="eyebrow">Print real, não anúncio</span>
-    <h2 class="sec-h">O que eles <span class="gold">falaram depois</span>.</h2>
-    <p class="sec-p">Troque pelos prints reais dos teus primeiros clientes. Esse público acredita em print, não em promessa.</p>
-
-    <div class="prints">
-      <div class="print">
-        <div class="balao">"Chegou aqui. Semana passada pedi aumento. Fui o único da equipe."</div>
-        <div class="quem">— Cliente, São Paulo</div>
-      </div>
-      <div class="print">
-        <div class="balao">"Comprei pra presentear meu irmão. Ele não falava comigo há 3 meses."</div>
-        <div class="quem">— Cliente, Belo Horizonte</div>
-      </div>
-      <div class="print">
-        <div class="balao">"Não é o cheiro. É que parei de pedir licença pra existir."</div>
-        <div class="quem">— Cliente, Curitiba</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section>
-    <span class="eyebrow">Antes de chamar</span>
-    <h2 class="sec-h">Perguntas <span class="gold">diretas</span>.</h2>
-
-    <details>
-      <summary>Cheira a quê?</summary>
-      <p>Cheiro amadeirado, quente, denso. Cheiro de quem não precisa levantar a voz. Não decora ambiente — anuncia presença.</p>
-    </details>
-    <details>
-      <summary>Quanto tempo dura?</summary>
-      <p>Dura o dia inteiro na pele e muito mais na roupa. Se te prometerem 24 horas, estão mentindo pra você.</p>
-    </details>
-    <details>
-      <summary>Como funciona a entrega?</summary>
-      <p>Você chama no WhatsApp, combina e recebe. Pagamento no Pix, comprovante na hora. Simples como homem resolve.</p>
-    </details>
-    <details>
-      <summary>Serve pra presentear?</summary>
-      <p>É o melhor presente que existe pra um homem que precisa lembrar quem ele é. Pai, irmão, amigo, noivo.</p>
-    </details>
-  </section>
-
-</div>
-
-<!-- FECHAMENTO -->
-<div class="fecha">
-  <div class="wrap">
-    <h2>Quem fica pensando em perfume de cem reais<br>é quem ainda <span class="gold">não decidiu</span> que tipo de homem quer ser.</h2>
-    <div style="margin-top:36px">
-      <a class="btn btn-zap" href="https://wa.me/55DDDNumeros?text=T%C3%B4%20no%20fogo%2C%20quero%20meu%20PATAMAR">
-        Decidir agora
-      </a>
-    </div>
-    <p class="nota">Sem formulário. Sem carrinho. Você fala com gente.</p>
+  <div class="pyramid">
+    <article><span class="lbl">Topo · Saída</span><h3>Licor e faísca</h3>
+      <ul><li>Lavanda</li><li>Ameixa mirabelle</li><li>Pimenta rosa</li></ul></article>
+    <article><span class="lbl">Coração · Corpo</span><h3>Cacau escuro</h3>
+      <ul><li>Cacau</li><li>Noz-moscada</li><li>Davana</li></ul></article>
+    <article><span class="lbl">Fundo · Rastro</span><h3>Baum e madeira</h3>
+      <ul><li>Baunilha de bourbon</li><li>Âmbar</li><li>Vetiver</li></ul></article>
   </div>
-</div>
+</section>
+
+<section class="full">
+  <figure><img src="fogo-detalhe.jpg" alt="Detalhe do frasco"><cite>Acordes achocolatados · projeção densa · 10 h+</cite></figure>
+</section>
+
+<section id="rito">
+  <div class="head"><span class="lbl">O rito</span><h2>Três gestos. Não mais.</h2></div>
+  <div class="rite">
+    <div><span class="num">I</span><h3>Distância</h3><p>15 cm da pele, seco, sem esfregar. O atrito rompe o topo de lavanda.</p></div>
+    <div><span class="num">II</span><h3>Pontos</h3><p>Base do pescoço e punho. O calor do corpo faz o cacau abrir.</p></div>
+    <div><span class="num">III</span><h3>Moderação</h3><p>Duas borrifadas bastam. A base de âmbar cresce com o tempo.</p></div>
+  </div>
+</section>
+
+<section id="comprar" class="buy">
+  <figure><img src="fogo-lateral.jpg" alt="Frasco em perfil"></figure>
+  <div>
+    <span class="lbl">Patamar</span><h2 class="serif">FOGO</h2>
+    <p style="color:var(--ash)">Eau de Parfum · Oriental Especiado Masculino</p>
+    <div class="price">R$ 189,00 <s>R$ 229,00</s></div>
+    <a class="btn solid" href="#">Adicionar — 50 ml</a>
+    <dl class="spec">
+      <div><dt>Concentração</dt><dd>Eau de Parfum 18%</dd></div>
+      <div><dt>Volume</dt><dd>50 ml / 1.7 FL. OZ.</dd></div>
+      <div><dt>Fixação</dt><dd>10 a 12 horas</dd></div>
+      <div><dt>Ocasião</dt><dd>Noite · dias frios</dd></div>
+      <div><dt>Lote</dt><dd>09.26</dd></div>
+    </dl>
+  </div>
+</section>
 
 <footer>
-  PATAMAR · SOU HOMEM PORRA · Linha Fogo 🔥
+  <form><input placeholder="Seu e-mail" aria-label="e-mail"><button>Receber o próximo lote</button></form>
+  <div class="lbl">Instagram<br>Termos<br>Trocas</div>
+  <small>© 2026 Patamar Perfumaria · Feito à mão em lotes pequenos</small>
 </footer>
 
-<a class="zap-fixo" href="https://wa.me/55DDDNumeros?text=T%C3%B4%20no%20fogo%2C%20quero%20meu%20PATAMAR">
-  Falar agora
-</a>
-
 </body>
-        </html>
-        
+</html>
