@@ -4,122 +4,447 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PATAMAR — FOGO · Eau de Parfum</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
   :root{
-    --bone:#EDE8DF; --stone:#C6BCAE; --ink:#141110;
-    --ash:#6E655C;  --ember:#A6521F; --line:rgba(20,17,16,.16);
+    --bone:#EDE8DF;
+    --stone:#C6BCAE;
+    --ink:#141110;
+    --ash:#6E655C;
+    --ember:#A6521F;
+    --line:rgba(20,17,16,.16);
     --pad:clamp(20px,6vw,88px);
   }
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
-  body{background:var(--bone);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;line-height:1.6}
-  
-  /* Otimização CSS para imagens não distorcerem no mobile */
-  img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
-  
-  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:.02em}
-  .lbl{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--ash)}
-  a{color:inherit;text-decoration:none}
 
-  /* aviso */
-  .bar{border-bottom:1px solid var(--line);padding:11px var(--pad);text-align:center}
-  .bar span{font-size:10px;letter-spacing:.3em;text-transform:uppercase}
-  .bar b{color:var(--ember);font-weight:400}
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-font-smoothing:antialiased
+  }
 
-  /* navegação */
-  header{position:sticky;top:0;z-index:20;background:rgba(237,232,223,.92);
-         backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
-         display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-         padding:20px var(--pad);gap:24px}
-  header nav{display:flex;gap:32px}
-  header .brand{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.42em;padding-left:.42em}
-  header .end{text-align:right}
+  body{
+    background:var(--bone);
+    color:var(--ink);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    line-height:1.6
+  }
 
-  /* herói */
-  .hero{position:relative;height:calc(100svh - 100px);min-height:620px;overflow:hidden}
-  .hero figure{position:absolute;inset:0}
-  .hero figcaption{position:absolute;inset:auto 0 0 0;padding:var(--pad);
-    display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-  .hero h1{font-size:clamp(80px,17vw,220px);line-height:.86;letter-spacing:.06em;mix-blend-mode:difference;color:#fff}
-  .hero .meta{text-align:right;color:#fff;mix-blend-mode:difference}
+  img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center
+  }
 
-  .btn{display:inline-block;border:1px solid var(--ink);padding:16px 46px;font-size:10px;
-       letter-spacing:.3em;text-transform:uppercase;transition:.35s;background:transparent}
-  .btn:hover{background:var(--ink);color:var(--bone)}
-  .btn.solid{background:var(--ink);color:var(--bone);width:100%;text-align:center}
-  .btn.solid:hover{opacity:.85}
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:300;
+    letter-spacing:.02em
+  }
 
-  section{padding:clamp(90px,15vh,190px) var(--pad)}
-  .head{max-width:760px;margin-bottom:64px}
-  .head h2{font-size:clamp(34px,5vw,58px);line-height:1.1;margin-top:18px}
+  .lbl{
+    font-size:10px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--ash)
+  }
 
-  /* manifesto */
-  .manifesto{text-align:center;border-block:1px solid var(--line)}
-  .manifesto p{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4.4vw,50px);
-               line-height:1.35;max-width:16ch;margin-inline:auto}
-  .manifesto em{font-style:italic;color:var(--ember)}
+  a{
+    color:inherit;
+    text-decoration:none
+  }
 
-  /* pirâmide */
-  .pyramid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
-  .pyramid article{padding:44px 34px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
-  .pyramid article:last-child{border-right:0}
-  .pyramid h3{font-size:30px;margin:20px 0 14px}
-  .pyramid ul{list-style:none;margin-top:22px;display:grid;gap:8px;color:var(--ash);font-size:14px}
-  .pyramid li::before{content:"— ";color:var(--ember)}
+  .bar{
+    border-bottom:1px solid var(--line);
+    padding:11px var(--pad);
+    text-align:center
+  }
 
-  /* imagem muda */
-  .full{padding:0}
-  .full figure{height:min(88svh,900px);position:relative}
-  .full cite{position:absolute;left:var(--pad);bottom:var(--pad);font-style:normal;
-             font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#fff;mix-blend-mode:difference}
+  .bar span{
+    font-size:10px;
+    letter-spacing:.3em;
+    text-transform:uppercase
+  }
 
-  /* rito */
-  .rite{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,72px)}
-  .rite h3{font-size:26px;margin:16px 0 10px}
-  .rite p{color:var(--ash);font-size:15px}
-  .num{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ember);letter-spacing:.2em}
+  .bar b{
+    color:var(--ember);
+    font-weight:400
+  }
 
-  /* compra */
-  .buy{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(40px,6vw,110px);align-items:center}
-  .buy figure{aspect-ratio:4/5}
-  .buy h2{font-size:clamp(46px,7vw,86px);line-height:1;margin:14px 0 6px}
-  .price{font-family:'Cormorant Garamond',serif;font-size:34px;margin:26px 0 26px}
-  .price s{color:var(--stone);font-size:20px;margin-left:14px}
-  .spec{border-top:1px solid var(--line);margin-top:44px}
-  .spec div{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--line);font-size:13px}
-  .spec dt{color:var(--ash);letter-spacing:.14em;text-transform:uppercase;font-size:10px}
-  .spec dd{text-align:right}
+  header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(237,232,223,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    padding:20px var(--pad);
+    gap:24px
+  }
 
-  footer{border-top:1px solid var(--line);padding:70px var(--pad) 36px;display:grid;
-         grid-template-columns:1.4fr 1fr;gap:44px;align-items:start}
-  footer form{display:flex;border-bottom:1px solid var(--ink);max-width:340px}
-  footer input{flex:1;background:none;border:0;padding:12px 0;font:inherit;font-size:13px;color:var(--ink);outline:none}
-  footer button{background:none;border:0;cursor:pointer;font:inherit;font-size:11px;letter-spacing:.24em;text-transform:uppercase}
-  footer small{grid-column:1/-1;color:var(--ash);font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-top:34px}
+  header nav{
+    display:flex;
+    gap:32px
+  }
+
+  header .brand{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;
+    letter-spacing:.42em;
+    padding-left:.42em
+  }
+
+  header .end{
+    text-align:right
+  }
+
+  .hero{
+    position:relative;
+    height:calc(100svh - 100px);
+    min-height:620px;
+    overflow:hidden
+  }
+
+  .hero figure{
+    position:absolute;
+    inset:0
+  }
+
+  .hero figcaption{
+    position:absolute;
+    inset:auto 0 0 0;
+    padding:var(--pad);
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    flex-wrap:wrap
+  }
+
+  .hero h1{
+    font-size:clamp(80px,17vw,220px);
+    line-height:.86;
+    letter-spacing:.06em;
+    mix-blend-mode:difference;
+    color:#fff
+  }
+
+  .hero .meta{
+    text-align:right;
+    color:#fff;
+    mix-blend-mode:difference
+  }
+
+  .btn{
+    display:inline-block;
+    border:1px solid var(--ink);
+    padding:16px 46px;
+    font-size:10px;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    transition:.35s;
+    background:transparent
+  }
+
+  .btn:hover{
+    background:var(--ink);
+    color:var(--bone)
+  }
+
+  .btn.solid{
+    background:var(--ink);
+    color:var(--bone);
+    width:100%;
+    text-align:center
+  }
+
+  .btn.solid:hover{
+    opacity:.85
+  }
+
+  section{
+    padding:clamp(90px,15vh,190px) var(--pad)
+  }
+
+  .head{
+    max-width:760px;
+    margin-bottom:64px
+  }
+
+  .head h2{
+    font-size:clamp(34px,5vw,58px);
+    line-height:1.1;
+    margin-top:18px
+  }
+
+  .manifesto{
+    text-align:center;
+    border-block:1px solid var(--line)
+  }
+
+  .manifesto p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(26px,4.4vw,50px);
+    line-height:1.35;
+    max-width:16ch;
+    margin-inline:auto
+  }
+
+  .manifesto em{
+    font-style:italic;
+    color:var(--ember)
+  }
+
+  .pyramid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line)
+  }
+
+  .pyramid article{
+    padding:44px 34px;
+    border-bottom:1px solid var(--line);
+    border-right:1px solid var(--line)
+  }
+
+  .pyramid article:last-child{
+    border-right:0
+  }
+
+  .pyramid h3{
+    font-size:30px;
+    margin:20px 0 14px
+  }
+
+  .pyramid ul{
+    list-style:none;
+    margin-top:22px;
+    display:grid;
+    gap:8px;
+    color:var(--ash);
+    font-size:14px
+  }
+
+  .pyramid li::before{
+    content:"— ";
+    color:var(--ember)
+  }
+
+  .full{
+    padding:0
+  }
+
+  .full figure{
+    height:min(88svh,900px);
+    position:relative
+  }
+
+  .full cite{
+    position:absolute;
+    left:var(--pad);
+    bottom:var(--pad);
+    font-style:normal;
+    font-size:10px;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    color:#fff;
+    mix-blend-mode:difference
+  }
+
+  .rite{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:clamp(28px,4vw,72px)
+  }
+
+  .rite h3{
+    font-size:26px;
+    margin:16px 0 10px
+  }
+
+  .rite p{
+    color:var(--ash);
+    font-size:15px
+  }
+
+  .num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:15px;
+    color:var(--ember);
+    letter-spacing:.2em
+  }
+
+  .buy{
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    gap:clamp(40px,6vw,110px);
+    align-items:center
+  }
+
+  .buy figure{
+    aspect-ratio:4/5
+  }
+
+  .buy h2{
+    font-size:clamp(46px,7vw,86px);
+    line-height:1;
+    margin:14px 0 6px
+  }
+
+  .price{
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;
+    margin:26px 0
+  }
+
+  .price s{
+    color:var(--stone);
+    font-size:20px;
+    margin-left:14px
+  }
+
+  .spec{
+    border-top:1px solid var(--line);
+    margin-top:44px
+  }
+
+  .spec div{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    font-size:13px
+  }
+
+  .spec dt{
+    color:var(--ash);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:10px
+  }
+
+  .spec dd{
+    text-align:right
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:70px var(--pad) 36px;
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:44px;
+    align-items:start
+  }
+
+  footer form{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    max-width:340px
+  }
+
+  footer input{
+    background:none;
+    border:0;
+    border-bottom:1px solid var(--ink);
+    padding:12px 0;
+    font:inherit;
+    font-size:13px;
+    color:var(--ink);
+    outline:none
+  }
+
+  footer button{
+    background:var(--ink);
+    color:var(--bone);
+    border:1px solid var(--ink);
+    cursor:pointer;
+    font:inherit;
+    font-size:10px;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    padding:15px 18px;
+    transition:.35s
+  }
+
+  footer button:hover{
+    opacity:.85
+  }
+
+  .success-message{
+    display:none;
+    font-size:12px;
+    color:var(--ember);
+    margin-top:4px
+  }
+
+  footer small{
+    grid-column:1/-1;
+    color:var(--ash);
+    font-size:10px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    margin-top:34px
+  }
 
   @media(max-width:900px){
-    .pyramid,.rite,.buy,footer{grid-template-columns:1fr}
-    header nav{display:none}
-    .pyramid article{border-right:0}
+    .pyramid,.rite,.buy,footer{
+      grid-template-columns:1fr
+    }
+
+    header nav{
+      display:none
+    }
+
+    .pyramid article{
+      border-right:0
+    }
   }
 </style>
 </head>
+
 <body>
 
-<div class="bar"><span>Lote <b>09.26</b> · Produção limitada de 300 unidades · Frete grátis acima de R$ 199</span></div>
+<div class="bar">
+  <span>Lote <b>09.26</b> · Produção limitada de 300 unidades · Frete grátis acima de R$ 199</span>
+</div>
 
 <header>
-  <nav><a href="#olfativo" class="lbl">Olfativo</a><a href="#rito" class="lbl">O rito</a><a href="#comprar" class="lbl">Comprar</a></nav>
+  <nav>
+    <a href="#olfativo" class="lbl">Olfativo</a>
+    <a href="#rito" class="lbl">O rito</a>
+    <a href="#comprar" class="lbl">Comprar</a>
+  </nav>
+
   <a class="brand" href="#">PATAMAR</a>
+
   <div class="end lbl">Sac / 05</div>
 </header>
 
 <section class="hero" style="padding:0">
-  <figure><img src="./fogo-hero.jpg.png" alt="PATAMAR FOGO sobre pedra vulcânica" fetchpriority="high"><figcaption>
-    <h1>FOGO</h1>
-    <div class="meta lbl">Eau de Parfum<br>50 ml · 1.7 FL. OZ.</div>
-  </figcaption></figure>
+  <figure>
+    <img src="./fogo-hero.jpg.png"
+         alt="PATAMAR FOGO sobre pedra vulcânica"
+         fetchpriority="high">
+
+    <figcaption>
+      <h1>FOGO</h1>
+      <div class="meta lbl">
+        Eau de Parfum<br>
+        50 ml · 1.7 FL. OZ.
+      </div>
+    </figcaption>
+  </figure>
 </section>
 
 <section class="manifesto">
@@ -127,54 +452,233 @@
 </section>
 
 <section id="olfativo">
-  <div class="head"><span class="lbl">Arquitetura olfativa</span>
+  <div class="head">
+    <span class="lbl">Arquitetura olfativa</span>
     <h2>Oriental especiado. Construído para a noite.</h2>
   </div>
+
   <div class="pyramid">
-    <article><span class="lbl">Topo · Saída</span><h3>Licor e faísca</h3>
-      <ul><li>Lavanda</li><li>Ameixa mirabelle</li><li>Pimenta rosa</li></ul></article>
-    <article><span class="lbl">Coração · Corpo</span><h3>Cacau escuro</h3>
-      <ul><li>Cacau</li><li>Noz-moscada</li><li>Davana</li></ul></article>
-    <article><span class="lbl">Fundo · Rastro</span><h3>Baum e madeira</h3>
-      <ul><li>Baunilha de bourbon</li><li>Âmbar</li><li>Vetiver</li></ul></article>
+    <article>
+      <span class="lbl">Topo · Saída</span>
+      <h3>Licor e faísca</h3>
+      <ul>
+        <li>Lavanda</li>
+        <li>Ameixa mirabelle</li>
+        <li>Pimenta rosa</li>
+      </ul>
+    </article>
+
+    <article>
+      <span class="lbl">Coração · Corpo</span>
+      <h3>Cacau escuro</h3>
+      <ul>
+        <li>Cacau</li>
+        <li>Noz-moscada</li>
+        <li>Davana</li>
+      </ul>
+    </article>
+
+    <article>
+      <span class="lbl">Fundo · Rastro</span>
+      <h3>Baum e madeira</h3>
+      <ul>
+        <li>Baunilha de bourbon</li>
+        <li>Âmbar</li>
+        <li>Vetiver</li>
+      </ul>
+    </article>
   </div>
 </section>
 
 <section class="full">
-  <figure><img src="./fogo-detalhe.jpg.png" alt="Detalhe do frasco e válvula" loading="lazy"><cite>Acordes achocolatados · projeção densa · 10 h+</cite></figure>
+  <figure>
+    <img src="./fogo-detalhe.jpg.png"
+         alt="Detalhe do frasco e válvula"
+         loading="lazy">
+
+    <cite>Acordes achocolatados · projeção densa · 10 h+</cite>
+  </figure>
 </section>
 
 <section id="rito">
-  <div class="head"><span class="lbl">O rito</span><h2>Três gestos. Não mais.</h2></div>
+  <div class="head">
+    <span class="lbl">O rito</span>
+    <h2>Três gestos. Não mais.</h2>
+  </div>
+
   <div class="rite">
-    <div><span class="num">I</span><h3>Distância</h3><p>15 cm da pele, seco, sem esfregar. O atrito rompe o topo de lavanda.</p></div>
-    <div><span class="num">II</span><h3>Pontos</h3><p>Base do pescoço e punho. O calor do corpo faz o cacau abrir.</p></div>
-    <div><span class="num">III</span><h3>Moderação</h3><p>Duas borrifadas bastam. A base de âmbar cresce com o tempo.</p></div>
+    <div>
+      <span class="num">I</span>
+      <h3>Distância</h3>
+      <p>15 cm da pele, seco, sem esfregar. O atrito rompe o topo de lavanda.</p>
+    </div>
+
+    <div>
+      <span class="num">II</span>
+      <h3>Pontos</h3>
+      <p>Base do pescoço e punho. O calor do corpo faz o cacau abrir.</p>
+    </div>
+
+    <div>
+      <span class="num">III</span>
+      <h3>Moderação</h3>
+      <p>Duas borrifadas bastam. A base de âmbar cresce com o tempo.</p>
+    </div>
   </div>
 </section>
 
 <section id="comprar" class="buy">
-  <figure><img src="./fogo-comprar.jpg.png" alt="Frasco em perfil no pedestal" loading="lazy"></figure>
+
+  <figure>
+    <img src="./fogo-comprar.jpg.png"
+         alt="Frasco em perfil no pedestal"
+         loading="lazy">
+  </figure>
+
   <div>
-    <span class="lbl">Patamar</span><h2 class="serif">FOGO</h2>
-    <p style="color:var(--ash)">Eau de Parfum · Oriental Especiado Masculino</p>
-    <div class="price">R$ 189,00 <s>R$ 229,00</s></div>
-    <a class="btn solid" href="#">Adicionar — 50 ml</a>
+    <span class="lbl">Patamar</span>
+
+    <h2 class="serif">FOGO</h2>
+
+    <p style="color:var(--ash)">
+      Eau de Parfum · Oriental Especiado Masculino
+    </p>
+
+    <div class="price">
+      R$ 189,00 <s>R$ 229,00</s>
+    </div>
+
+    <!-- BOTÃO DIRECIONA PARA WHATSAPP -->
+    <a
+      class="btn solid"
+      href="https://wa.me/5543999999999?text=Olá%2C%20quero%20comprar%20o%20PATAMAR%20FOGO%2050ml."
+      target="_blank"
+      rel="noopener">
+      Comprar — 50 ml
+    </a>
+
     <dl class="spec">
-      <div><dt>Concentração</dt><dd>Eau de Parfum 18%</dd></div>
-      <div><dt>Volume</dt><dd>50 ml / 1.7 FL. OZ.</dd></div>
-      <div><dt>Fixação</dt><dd>10 a 12 horas</dd></div>
-      <div><dt>Ocasião</dt><dd>Noite · dias frios</dd></div>
-      <div><dt>Lote</dt><dd>09.26</dd></div>
+      <div>
+        <dt>Concentração</dt>
+        <dd>Eau de Parfum 18%</dd>
+      </div>
+
+      <div>
+        <dt>Volume</dt>
+        <dd>50 ml / 1.7 FL. OZ.</dd>
+      </div>
+
+      <div>
+        <dt>Fixação</dt>
+        <dd>10 a 12 horas</dd>
+      </div>
+
+      <div>
+        <dt>Ocasião</dt>
+        <dd>Noite · dias frios</dd>
+      </div>
+
+      <div>
+        <dt>Lote</dt>
+        <dd>09.26</dd>
+      </div>
     </dl>
   </div>
 </section>
 
 <footer>
-  <form><input placeholder="Seu e-mail" aria-label="e-mail"><button>Receber o próximo lote</button></form>
-  <div class="lbl">Instagram<br>Termos<br>Trocas</div>
-  <small>© 2026 Patamar Perfumaria · Feito à mão em lotes pequenos</small>
+
+  <!-- CAPTURA DE INTERESSADOS -->
+  <form id="interestForm">
+
+    <span class="lbl">Próximo lote</span>
+
+    <input
+      type="text"
+      id="leadName"
+      name="name"
+      placeholder="Seu nome"
+      aria-label="Seu nome"
+      required>
+
+    <input
+      type="tel"
+      id="leadWhatsapp"
+      name="whatsapp"
+      placeholder="Seu WhatsApp"
+      aria-label="Seu WhatsApp"
+      required>
+
+    <button type="submit">
+      Avisar-me sobre o próximo lote
+    </button>
+
+    <div class="success-message" id="successMessage">
+      Seu interesse foi registrado. Em breve entraremos em contato.
+    </div>
+
+  </form>
+
+  <div class="lbl">
+    Instagram<br>
+    Termos<br>
+    Trocas
+  </div>
+
+  <small>
+    © 2026 Patamar Perfumaria · Feito à mão em lotes pequenos
+  </small>
+
 </footer>
+
+<script>
+
+  /*
+   * NÚMERO DO WHATSAPP DA PATAMAR
+   * Substitua pelo seu número real.
+   */
+  const whatsappNumber = "5543999999999";
+
+  /*
+   * BOTÃO DE COMPRA
+   * Mantém o direcionamento para WhatsApp.
+   */
+
+  /*
+   * FORMULÁRIO DE INTERESSE
+   * Atualmente abre o WhatsApp com os dados.
+   * Depois podemos integrar com Google Sheets, Make, n8n ou CRM.
+   */
+
+  const interestForm = document.getElementById("interestForm");
+  const successMessage = document.getElementById("successMessage");
+
+  interestForm.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    const name = document.getElementById("leadName").value.trim();
+    const whatsapp = document.getElementById("leadWhatsapp").value.trim();
+
+    if(!name || !whatsapp){
+      return;
+    }
+
+    const message =
+      `Olá! Meu nome é ${name}. Quero ser avisado sobre o próximo lote do perfume PATAMAR FOGO. Meu WhatsApp é ${whatsapp}.`;
+
+    const url =
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+
+    successMessage.style.display = "block";
+
+    interestForm.reset();
+
+  });
+
+</script>
 
 </body>
 </html>
