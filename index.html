@@ -6,7 +6,9 @@
 <title>PATAMAR — FOGO · Eau de Parfum</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="./fogo-hero.webp" type="image/webp" fetchpriority="high">
 
 <style>
   :root{
@@ -117,6 +119,19 @@
   .hero figure{
     position:absolute;
     inset:0
+  }
+
+  .hero picture,
+  .full picture{
+    display:block;
+    width:100%;
+    height:100%;
+  }
+
+  .buy picture{
+    display:block;
+    width:100%;
+    height:100%;
   }
 
   .hero figcaption{
@@ -613,9 +628,15 @@
 
 <section class="hero" style="padding:0">
   <figure>
-    <img src="./fogo-hero.jpg.png"
-         alt="PATAMAR FOGO sobre pedra vulcânica"
-         fetchpriority="high">
+    <picture>
+      <source srcset="./fogo-hero.webp" type="image/webp">
+      <img src="./fogo-hero.jpg.png"
+           alt="PATAMAR FOGO sobre pedra vulcânica"
+           width="1600"
+           height="1200"
+           fetchpriority="high"
+           decoding="async">
+    </picture>
 
     <figcaption>
       <h1>FOGO</h1>
@@ -672,9 +693,15 @@
 
 <section class="full">
   <figure>
-    <img src="./fogo-detalhe.jpg.png"
-         alt="Detalhe do frasco e válvula"
-         loading="lazy">
+    <picture>
+      <source srcset="./fogo-detalhe.webp" type="image/webp">
+      <img src="./fogo-detalhe.jpg.png"
+           alt="Detalhe do frasco e válvula"
+           loading="lazy"
+           decoding="async"
+           width="1600"
+           height="1200">
+    </picture>
 
     <cite>Acordes achocolatados · projeção densa · 10 h+</cite>
   </figure>
@@ -710,9 +737,16 @@
 <section id="comprar" class="buy">
 
   <figure>
-    <img src="./fogo-comprar.jpg.png"
-         alt="Frasco em perfil no pedestal"
-         loading="lazy">
+    <picture>
+      <source srcset="./fogo-comprar.webp" type="image/webp">
+      <img src="./fogo-comprar.jpg.png"
+           alt="Frasco em perfil no pedestal"
+           loading="lazy"
+           decoding="async"
+           width="1200"
+           height="1500"
+           sizes="(max-width: 900px) 100vw, 53vw">
+    </picture>
   </figure>
 
   <div>
@@ -830,7 +864,7 @@
    * NÚMERO DO WHATSAPP DA PATAMAR
    * Substitua pelo seu número real.
    */
-  const whatsappNumber = "5543999999999";
+  const whatsappNumber = "5543996760090";
 
   /*
    * BOTÃO DE COMPRA
