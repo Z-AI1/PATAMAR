@@ -1,0 +1,25 @@
+# Permite o rastreamento por todos os motores de busca tradicionais e IAs
+User-agent: *
+Allow: /
+
+# Permissão explícita para Crawlers de Inteligência Artificial (GEO / AIO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Indica a localização exata do mapa do site
+Sitemap: https://www.patamar.shop/sitemap.xml
